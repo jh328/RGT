@@ -1,20 +1,19 @@
-'use client'
+import React from 'react';
 import {Book} from "@/app/lib/boot";
-import {useState} from "react"
+import BookCard from "@/app/component/BookCard";
 
-export default function BookList() {
-    const [books, setBooks] = useState<Book[]>([]);
-
-    return (
-        <div>
-            <h3>오늘의 선택</h3>
-            <ul>
-                {books.map((book) => (
-                    <li key={book.id}>
-                        <strong>{book.title}</strong> - {book.author}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    )
+interface BookListProps {
+    books: Book[];
 }
+
+const BookList: React.FC<BookListProps> = ({ books }) => {
+    return (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {books.map((book) => (
+                <BookCard key={book.id} book={book} />
+            ))}
+        </div>
+    );
+};
+
+export default BookList;
