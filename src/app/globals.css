@@ -32,3 +32,15 @@ body {
 .search-container{
     @apply flex items-center gap-2 mt-2 w-full;
 }
+
+.page-nation{
+    @apply flex justify-center mt-[4px]
+}
+
+.page-nation-btn{
+    @apply px-[4px] py-[2px] mx-[1px]
+}
+
+.delete-btn{
+    @apply mt-[4px] bg-red-600 text-white px-[4px] py-[2px]
+}

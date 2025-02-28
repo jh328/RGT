@@ -1,5 +1,5 @@
 import React from 'react';
-import {Book} from "@/app/lib/boot";
+import {Book} from "@/app/lib/book";
 import BookCard from "@/app/component/BookCard";
 
 interface BookListProps {

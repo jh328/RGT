@@ -1,24 +1,39 @@
 'use client';
 import { useEffect, useState } from 'react';
-import {getBooks} from "@/app/lib/boot";
-import BookList from "@/app/component/BookList";
+import BookList from '@/app/component/BookList';
+import Link from 'next/link';
+import {useBooks} from "@/app/store/useBookStore";
 
 export default function BooksPage() {
-    const [books, setBooks] = useState(getBooks());
+    const { books, getBooks } = useBooks();
     const [searchQuery, setSearchQuery] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const booksPerPage = 10;
 
     useEffect(() => {
-        setBooks(getBooks());
+        getBooks();
     }, []);
 
-    // 검색 기능
     const filteredBooks = books.filter(
         book => book.title.includes(searchQuery) || book.author.includes(searchQuery)
     );
 
+    const indexLastPage = currentPage * booksPerPage;
+    const indexFirstPage = indexLastPage - booksPerPage;
+    const currentBooks = filteredBooks.slice(indexFirstPage, indexLastPage);
+
+    const totalPage = Math.ceil(filteredBooks.length / booksPerPage);
+
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">📚 책 목록</h1>
+
+            <Link href="/books/add">
+                <button className="bg-green-500 text-white px-4 py-2 mb-4">
+                    ➕ 새 책 추가
+                </button>
+            </Link>
+
             <input
                 type="text"
                 placeholder="책 제목 또는 저자 검색"
@@ -26,7 +41,20 @@ export default function BooksPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="border p-2 w-full mb-4"
             />
-            <BookList books={filteredBooks} />
+
+            <BookList books={currentBooks} />
+
+            <div className="page-nation flex justify-center mt-4">
+                {Array.from({ length: totalPage }, (_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setCurrentPage(index + 1)}
+                        className={`px-4 py-2 mx-1 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 }
