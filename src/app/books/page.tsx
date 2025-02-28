@@ -1,11 +1,11 @@
 'use client';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import BookList from '@/app/component/BookList';
 import Link from 'next/link';
 import {useBooks} from "@/app/store/useBookStore";
 
 export default function BooksPage() {
-    const { books, getBooks } = useBooks();
+    const {books, getBooks} = useBooks();
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const booksPerPage = 10;
@@ -26,11 +26,12 @@ export default function BooksPage() {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">📚 책 목록</h1>
+            <h1 className="text-2xl font-bold mb-4"> 책 목록</h1>
 
             <Link href="/books/add">
-                <button className="bg-green-500 text-white px-4 py-2 mb-4">
-                    ➕ 새 책 추가
+                <button>
+                    <span className="hidden">추가</span>
+                    <span className="ico-plus btn-plus-ico"></span>
                 </button>
             </Link>
 
@@ -42,10 +43,10 @@ export default function BooksPage() {
                 className="border p-2 w-full mb-4"
             />
 
-            <BookList books={currentBooks} />
+            <BookList books={currentBooks}/>
 
             <div className="page-nation flex justify-center mt-4">
-                {Array.from({ length: totalPage }, (_, index) => (
+                {Array.from({length: totalPage}, (_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentPage(index + 1)}

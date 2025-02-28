@@ -12,7 +12,7 @@ export default function AddBookPage() {
         author: '',
         description: '',
         price: 0,
-        image: '/image/default.jpg',
+        image: '/images/default.jpg',
     });
 
     const handleSubmit = () => {

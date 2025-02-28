@@ -111,6 +111,7 @@ export const books: Book[] = [
     }
 ];
 
+/*
 
 export function getBooks(): Book[] {
     if (typeof window !== "undefined") {
@@ -120,12 +121,13 @@ export function getBooks(): Book[] {
     return books
 }
 
-// export function addBook(book: Book) {
-//     const updatedBook = [...getBooks(), book];
-//     localStorage.setItem("books", JSON.stringify(updatedBook));
-// }
-//
-// export function deleteBook(id: number) {
-//     const updatedBooks = getBooks().filter(book => book.id !== id);
-//     localStorage.setItem("books", JSON.stringify(updatedBooks));
-// }
+export function addBook(book: Book) {
+    const updatedBook = [...getBooks(), book];
+    localStorage.setItem("books", JSON.stringify(updatedBook));
+}
+
+export function deleteBook(id: number) {
+    const updatedBooks = getBooks().filter(book => book.id !== id);
+    localStorage.setItem("books", JSON.stringify(updatedBooks));
+}
+*/

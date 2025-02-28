@@ -34,15 +34,15 @@ export default function BookDetailPage() {
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="book-detail-container">
             <Link href="/books" className="text-blue-500">← 책 목록으로</Link>
-            <div className="flex flex-col md:flex-row items-center gap-6 mt-4">
+            <div className="book-detail-text">
                 <Image src={book.image} alt={book.title} width={300} height={400} className="rounded-lg shadow-md"/>
                 <div>
-                    <h1 className="text-3xl font-bold">{book.title}</h1>
-                    <p className="text-lg text-gray-600">저자: {book.author}</p>
-                    <button onClick={handleDelete} className="mt-4 bg-red-600 text-white px-4 py-2">
-                        🗑️ 책 삭제
+                    <h1 className="book-detail-h1">{book.title}</h1>
+                    <p className="book-detail-au">저자: {book.author}</p>
+                    <button onClick={handleDelete} className="book-delete-btn">
+                        책 삭제
                     </button>
                 </div>
             </div>
