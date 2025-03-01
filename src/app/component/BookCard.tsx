@@ -20,7 +20,7 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
             <h2 className="text-xl font-bold mt-2">{book.title}</h2>
             <p className="text-gray-600">저자: {book.author}</p>
             <p className="text-sm">{book.description}</p>
-            <p className="text-md font-semibold mt-2">💰 가격: {book.price}원</p>
+            <p className="text-md font-semibold mt-2"> 가격: {book.price}원</p>
             <Link href={`/books/${book.id}`} className="text-blue-500 mt-2 inline-block">
                 상세 보기 →
             </Link>
